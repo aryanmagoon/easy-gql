@@ -1,0 +1,21 @@
+{
+    "name": "easy-gql",
+    "version": "0.0.2",
+    "license": "MIT",
+    "files": [
+      "main-template",
+      "src/index.js"
+    ],
+    "bin": {
+      "create-graphql-api": "./src/index.js"
+    },
+    "scripts":{
+      "prepublishOnly": "cp -R ../main-template .",
+      "postpublish": "rm -rf main-template"
+    },
+    "dependencies": {
+      "chalk": "^3.0.0",
+      "commander": "^4.0.1",
+      "fs-extra": "^8.1.0"
+    }
+  }
