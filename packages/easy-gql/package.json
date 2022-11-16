@@ -1,6 +1,16 @@
 {
     "name": "easy-gql",
-    "version": "0.0.2",
+    "description": "Create Typescript GraphQL Server with Configured Postgres Database on the Command Line",
+    "author": "Aryan Magoon",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/aryanmagoon/easy-gql.git"
+    },
+    "bugs": {
+      "url": "https://github.com/aryanmagoon/easy-gql.git/issues"
+    },
+    "homepage": "https://github.com/aryanmagoon/easy-gql.git#readme",
+    "version": "0.0.3",
     "license": "MIT",
     "files": [
       "main-template",
