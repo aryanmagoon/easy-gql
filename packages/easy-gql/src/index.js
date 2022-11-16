@@ -5,6 +5,7 @@ const execSync = require("child_process").execSync;
 const packageJson = require("../package.json");
 const fs = require("fs-extra");
 const path = require("path");
+const sqlite3 = require("sqlite3");
 
 let projectName;
 
@@ -32,9 +33,13 @@ if (typeof projectName === "undefined") {
     console.log("For example:");
     console.log(`  ${chalk.cyan(program.name())} ${chalk.green("my-gql")}`);
     process.exit(1);
+
+
 }
 
-if (fs.existsSync(path.join(process.cwd(), projectName))) {
+const projectDest=path.join(process.cwd(), projectName);
+
+if (fs.existsSync(projectDest)) {
     console.log(`The directory ${chalk.green(projectName)} already exists`);
     process.exit(1);
 
@@ -52,9 +57,19 @@ function yarnAvailable() {
         return false;
     }
 }
-//if yarn is avilable use execSync to run yarn install else use npm install
-if (yarnAvailable()) {
-    execSync("yarn install", { stdio: [0,1,2] });
-} else {
-    execSync("npm install", { stdio: [0,1,2] });
-}
+new sqlite3.Database(
+    path.join(__dirname, "..", "main-template", "./database.sqlite"),
+    sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+     err=> {
+        if (err) {
+            //print error message with identifier
+            console.log(chalk.red("Error creating db: ") + err.message);
+        }
+        process.chdir(projectDest);
+        if (yarnAvailable()) {
+            execSync("yarn install", { stdio: [0,1,2] });
+        } else {
+            execSync("npm install", { stdio: [0,1,2] });\
+        }
+    }
+);
