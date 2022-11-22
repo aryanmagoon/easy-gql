@@ -1,10 +1,9 @@
 # easy-gql
 A Lightweight Package to Set Up a Typescript GraphQL Server with Configured Postgres Database
 
-#installation
+# usage
 ```
-npm install easy-gql
+npx easy-gql gql-api
+cd gql-api
+npm start
 ```
-
-#usage
-```npx init
