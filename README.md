@@ -1,5 +1,7 @@
 # easy-gql
-A Lightweight Package to Set Up a Typescript GraphQL Server with Configured Postgres Database
+A Lightweight Package to Set Up a Typescript GraphQL Server with Database
+
+> **_NOTE:_**  You may need to change relationalconfig.json in order properly configure Postgres database
 
 # usage
 ```
